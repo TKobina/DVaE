@@ -9,6 +9,8 @@ Interface for graph objects
 #include <chrono>
 
 #include "entity.h"
+#include "node.h"
+#include "edge.h"
 #include "attribute_dictionary.h"
 
 using std::vector;

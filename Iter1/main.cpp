@@ -32,6 +32,7 @@
 * BOOK.H
 * IMPORTER.h
 *	first field always entity ID; change this?
+*	can only currently have nodes in edge.entities (importer.cpp line 46-ish)
 * LOGGER.H
 *	max lines to hold 
 *	control output to file vs screen

@@ -6,6 +6,7 @@
 #include "attribute.h"
 #include "attribute_dictionary.h"
 
+const int NULL_ENTITY = 0;
 //Entity Types
 const int NODE = 0;
 const int EDGE = 1;
@@ -13,27 +14,20 @@ const int EDGE = 1;
 class Entity
 {
 private:
+	void remap();
+protected:
 	std::vector<std::shared_ptr<_Attribute>> attributes;
 	std::map<int, int> attributeMap;
-	void remap();
-public:
-	const int entityID;
-	const int entityType;
+public:	
+	Entity(int _entityID = NULL_ENTITY);
+	virtual int get_id() = 0;
 
-	Entity(int _entityID, int _entityType);
-	//~Entity() {}
-	
 	void add_attribute(std::shared_ptr<_Attribute> attribute);
-	std::shared_ptr<_Attribute> get_attribute_by_key(int _key);
-	
-	//std::string get_attribute_by_key(int _key);
-	void remove_attribute_by_key(int _key);
+	std::shared_ptr<_Attribute> get_attribute(int _key);
+	void remove_attribute(int _key);
 
-	void output_all(AttributeDictionary& _dictionary, std::ostream& _out = std::cout);
-
-	//TEMPLATE METHOD DEFINITIONS
 	template<typename T>
-	void set_attribute_by_key(int _key, T _value)
+	void set_attribute(int _key, T _value)
 	{
 		int index;
 		Attribute <T>* a = new Attribute<T>(_key, _value);
@@ -53,7 +47,7 @@ public:
 	}
 
 	template<typename T>
-	std::vector<int> search_attribute_by_value(T _value)
+	std::vector<int> find_attribute(T _value)
 	{
 		int key;
 		std::vector<int> keys;
@@ -74,4 +68,11 @@ public:
 		}
 		return keys;
 	}
+
+	virtual void output_all(AttributeDictionary& _dictionary, std::ostream& _out = std::cout) {};
+	
+	virtual void add_entity(std::shared_ptr<Entity> _e) {}
+	virtual void remove_entity(int _key) {}
+	virtual std::vector<std::shared_ptr<Entity>>& get_entities();
+
 };

@@ -5,8 +5,6 @@
 #include <typeinfo>
 #include "misc.h"
 
-class Entity;	//Forward declaration, since EdgeNode:_Attribute holds pointer to Entity
-
 class _Attribute
 {
 protected:
@@ -17,7 +15,7 @@ public:
 	//virtual void set_value(long long int _value) {};
 	virtual void set_value(double _value) {}
 	virtual void set_value(std::string _value) {}
-	virtual void set_value(std::shared_ptr<Entity> _node) {}
+	//virtual void set_value(std::shared_ptr<Entity> _node) {}
 	virtual std::string get_value() = 0;
 };
 

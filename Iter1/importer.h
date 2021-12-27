@@ -7,7 +7,8 @@
 
 class Importer
 {
-
+protected:
+	int NODES_IN_EDGE = 2;
 public:
 	virtual void proc_import(Book& book, int type, std::istream& _in) = 0;
 };

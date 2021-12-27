@@ -141,20 +141,24 @@
   <ItemGroup>
     <ClCompile Include="attribute_dictionary.cpp" />
     <ClCompile Include="book.cpp" />
+    <ClCompile Include="edge.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="collective.cpp" />
     <ClCompile Include="importer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="node.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="attribute.h" />
     <ClInclude Include="attribute_dictionary.h" />
     <ClInclude Include="book.h" />
     <ClInclude Include="collective.h" />
+    <ClInclude Include="edge.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="importer.h" />
     <ClInclude Include="misc.h" />
+    <ClInclude Include="node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

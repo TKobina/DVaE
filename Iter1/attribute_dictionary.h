@@ -13,7 +13,6 @@ private:
 	std::map<int, std::string> dictionary;
 	std::map<std::string, int> rdictionary;
 	int lastKey = 0;
-
 public:
 	void add_definition(std::string _definition);
 	void set_definition(int _key, std::string _definition);

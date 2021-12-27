@@ -29,15 +29,29 @@ void Importer_CSV::proc_import(Book& _book, int type, std::istream& _in)
 	while (std::getline(_in, line))
 	{
 		parse_line(line, data);
-		int id = std::stoi(data[0]);
+
+		size_t index = 0;
+		int id = std::stoi(data[index]);
+		++index;
+
 		_book.entity_create(type, id);
 
 		if (data.size() == 1) continue;  //in case of series of ID entities without any other attributes		
 
-		for (size_t i = 1; i < data.size(); ++i)
+		if (type == EDGE)
 		{
-			int key = _book.dictionary_get(type).get_key(fields[i - 1]);
-			_book.attribute_create<std::string>(type, id, key, data[i]);
+			for (index; index < 3; ++index)
+			{
+				std::shared_ptr<Entity> edge = _book.entity_get(EDGE, id);
+				int node_id = std::stoi(data[index]);
+				edge->add_entity(_book.entity_get(NODE, node_id));
+			}
+		}
+
+		for (index; index < data.size(); ++index)
+		{
+			int key = _book.dictionary_get(type).get_key(fields[index - 1]);
+			_book.attribute_create<std::string>(type, id, key, data[index]);
 		}
 	}
 }

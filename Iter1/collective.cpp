@@ -8,14 +8,14 @@ void Collective::remap(vector<shared_ptr<Entity>>& _v, map<int, int>& _m)
 	_m.clear();
 	for (size_t i = 0; i < _v.size(); ++i)
 	{
-		_m.emplace(_v[i]->entityID, i);
+		_m.emplace(_v[i]->get_id(), i);
 	}
 }
 
 void Collective::add_entity(vector<shared_ptr<Entity>>& _v, map<int, int>& _m, shared_ptr<Entity> _e)
 {
 	_v.push_back(_e);
-	_m.emplace(_e->entityID, _v.size() - 1);
+	_m.emplace(_e->get_id(), _v.size() - 1);
 }
 
 shared_ptr<Entity> Collective::get_entity(vector<shared_ptr<Entity>>& _v, map<int, int>& _m, int _id)
@@ -69,12 +69,12 @@ void Collective::print_all(std::ostream& _out)
 	*/
 
 	_out << "\nNODES: ";
-	_out << LDIVIDE;
+	_out << LDIVIDE << LDIVIDE;
 	for (auto& node : nodes)
 	{
 		//_out << std::setfill('=') << std::setw(5);  //NOT WORKING WHY???
 		node->output_all(nodeDict, _out);
-		_out << SDIVIDE;
+		_out << LDIVIDE;
 	}
 	_out << "\n";
 
@@ -84,11 +84,11 @@ void Collective::print_all(std::ostream& _out)
 	*/
 
 	_out << "\nEDGES:";
-	_out << LDIVIDE;
+	_out << LDIVIDE << LDIVIDE;
 	for (auto& edge : edges)
 	{
 		edge->output_all(edgeDict, _out);
-		_out << SDIVIDE;
+		_out << LDIVIDE;
 	}
 
 	_out << "\n";
