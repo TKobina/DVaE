@@ -5,7 +5,7 @@
 DVaE is inteded to permit dynamic and flexible visualization and exploration of data, a la graphs, comparable at least
 initially to Cytoscape or Analyst Notebook.
 
-## EXTERNAL REFERERNCES
+## EXTERNAL REFERENCES
 
 * GIT
 	* repository: 
