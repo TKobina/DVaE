@@ -1,75 +1,103 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
+    <Filter Include="headers">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="data">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="output">
+      <UniqueIdentifier>{a16191d2-ff50-4605-bce4-19c3d6fc4554}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data_structure">
+      <UniqueIdentifier>{5ba9ed94-2663-4127-9d59-7f68992ab364}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\main.cpp">
+      <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="attribute_dictionary.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="data_structure\edge.cpp">
+      <Filter>data_structure</Filter>
     </ClCompile>
-    <ClCompile Include="collective.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="data_structure\entity.cpp">
+      <Filter>data_structure</Filter>
     </ClCompile>
-    <ClCompile Include="entity.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="data_structure\importer.cpp">
+      <Filter>data_structure</Filter>
     </ClCompile>
-    <ClCompile Include="book.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="data_structure\node.cpp">
+      <Filter>data_structure</Filter>
     </ClCompile>
-    <ClCompile Include="importer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="data_structure\attribute_dictionary.cpp">
+      <Filter>data_structure</Filter>
     </ClCompile>
-    <ClCompile Include="node.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="data_structure\book.cpp">
+      <Filter>data_structure</Filter>
     </ClCompile>
-    <ClCompile Include="edge.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="data_structure\collective.cpp">
+      <Filter>data_structure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="attribute.h">
-      <Filter>Header Files</Filter>
+    <None Include="data\MOCK_DATA (1).csv">
+      <Filter>data</Filter>
+    </None>
+    <None Include="data\MOCK_DATA (2).csv">
+      <Filter>data</Filter>
+    </None>
+    <None Include="data\MOCK_DATA (3).csv">
+      <Filter>data</Filter>
+    </None>
+    <None Include="data\MOCK_EDGES.csv">
+      <Filter>data</Filter>
+    </None>
+    <None Include="data\MOCK_NODES.csv">
+      <Filter>data</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="output\output_log.txt">
+      <Filter>output</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="data_structure\edge.h">
+      <Filter>data_structure</Filter>
     </ClInclude>
-    <ClInclude Include="entity.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="data_structure\entity.h">
+      <Filter>data_structure</Filter>
     </ClInclude>
-    <ClInclude Include="collective.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="data_structure\graph.h">
+      <Filter>data_structure</Filter>
     </ClInclude>
-    <ClInclude Include="attribute_dictionary.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="data_structure\importer.h">
+      <Filter>data_structure</Filter>
     </ClInclude>
-    <ClInclude Include="misc.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="data_structure\misc.h">
+      <Filter>data_structure</Filter>
     </ClInclude>
-    <ClInclude Include="graph.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="data_structure\node.h">
+      <Filter>data_structure</Filter>
     </ClInclude>
-    <ClInclude Include="book.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="data_structure\attribute.h">
+      <Filter>data_structure</Filter>
     </ClInclude>
-    <ClInclude Include="importer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="data_structure\attribute_dictionary.h">
+      <Filter>data_structure</Filter>
     </ClInclude>
-    <ClInclude Include="node.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="data_structure\book.h">
+      <Filter>data_structure</Filter>
     </ClInclude>
-    <ClInclude Include="edge.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="data_structure\collective.h">
+      <Filter>data_structure</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

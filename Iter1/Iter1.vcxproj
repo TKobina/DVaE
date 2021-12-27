@@ -18,6 +18,38 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="data_structure\attribute_dictionary.cpp" />
+    <ClCompile Include="data_structure\book.cpp" />
+    <ClCompile Include="data_structure\collective.cpp" />
+    <ClCompile Include="data_structure\edge.cpp" />
+    <ClCompile Include="data_structure\entity.cpp" />
+    <ClCompile Include="data_structure\importer.cpp" />
+    <ClCompile Include="data_structure\node.cpp" />
+    <ClCompile Include="source\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\MOCK_DATA (1).csv" />
+    <None Include="data\MOCK_DATA (2).csv" />
+    <None Include="data\MOCK_DATA (3).csv" />
+    <None Include="data\MOCK_EDGES.csv" />
+    <None Include="data\MOCK_NODES.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="output\output_log.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="data_structure\attribute.h" />
+    <ClInclude Include="data_structure\attribute_dictionary.h" />
+    <ClInclude Include="data_structure\book.h" />
+    <ClInclude Include="data_structure\collective.h" />
+    <ClInclude Include="data_structure\edge.h" />
+    <ClInclude Include="data_structure\entity.h" />
+    <ClInclude Include="data_structure\graph.h" />
+    <ClInclude Include="data_structure\importer.h" />
+    <ClInclude Include="data_structure\misc.h" />
+    <ClInclude Include="data_structure\node.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,28 +170,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="attribute_dictionary.cpp" />
-    <ClCompile Include="book.cpp" />
-    <ClCompile Include="edge.cpp" />
-    <ClCompile Include="entity.cpp" />
-    <ClCompile Include="collective.cpp" />
-    <ClCompile Include="importer.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="node.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="attribute.h" />
-    <ClInclude Include="attribute_dictionary.h" />
-    <ClInclude Include="book.h" />
-    <ClInclude Include="collective.h" />
-    <ClInclude Include="edge.h" />
-    <ClInclude Include="entity.h" />
-    <ClInclude Include="graph.h" />
-    <ClInclude Include="importer.h" />
-    <ClInclude Include="misc.h" />
-    <ClInclude Include="node.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
