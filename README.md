@@ -1,11 +1,11 @@
-# Data Visualisation and Exploration (DVaE)
+# DATA VISUALIZATION AND EXPLORATION (DVAE)
 
-============================================OVERVIEW=========================================
+## OVERVIEW
 
-#VaE is inteded to permit dynamic and flexible visualization and exploration of data, a la graphs, comparable at least
+DVaE is inteded to permit dynamic and flexible visualization and exploration of data, a la graphs, comparable at least
 initially to Cytoscape or Analyst Notebook.
 
-=======================================EXTERNAL REFERENCES====================================
+## EXCERNAL REFERERNCES
 
 * GIT
 	* repository: 
