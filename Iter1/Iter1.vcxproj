@@ -26,6 +26,8 @@
     <ClCompile Include="data_structure\entity.cpp" />
     <ClCompile Include="data_structure\importer.cpp" />
     <ClCompile Include="data_structure\node.cpp" />
+    <ClCompile Include="graphics_engine\graphics_engine.cpp" />
+    <ClCompile Include="source\glad.c" />
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +51,12 @@
     <ClInclude Include="data_structure\importer.h" />
     <ClInclude Include="data_structure\misc.h" />
     <ClInclude Include="data_structure\node.h" />
+    <ClInclude Include="graphics_engine\graphics_engine.h" />
+    <ClInclude Include="graphics_engine\graphics_engine_data.h" />
+    <ClInclude Include="include\glad\glad.h" />
+    <ClInclude Include="include\GLFW\glfw3.h" />
+    <ClInclude Include="include\GLFW\glfw3native.h" />
+    <ClInclude Include="include\KHR\khrplatform.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -104,15 +112,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\OneDrive\Personal Project\Data Visualisation and Exploration\Iter1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\OneDrive\Personal Project\Data Visualisation and Exploration\Iter1\libraries\GLFW;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\OneDrive\Personal Project\Data Visualisation and Exploration\Iter1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\OneDrive\Personal Project\Data Visualisation and Exploration\Iter1\libraries\GLFW;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>E:\OneDrive\Personal Project\Data Visualisation and Exploration\Iter1\include;D:\OneDrive\Personal Project\Data Visualisation and Exploration\Iter1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\OneDrive\Personal Project\Data Visualisation and Exploration\Iter1\libraries;D:\OneDrive\Personal Project\Data Visualisation and Exploration\Iter1\libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\OneDrive\Personal Project\Data Visualisation and Exploration\Iter1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\OneDrive\Personal Project\Data Visualisation and Exploration\Iter1\libraries\GLFW;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -124,6 +140,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -140,6 +157,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -152,6 +170,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -168,6 +187,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

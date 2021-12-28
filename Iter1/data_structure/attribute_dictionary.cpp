@@ -8,7 +8,7 @@ void AttributeDictionary::add_definition(std::string _definition)
 
 void AttributeDictionary::set_definition(int _key, std::string _definition)
 {
-	int extant = dictionary.count(_key);
+	size_t extant = dictionary.count(_key);
 	if (extant == 0)
 	{
 		dictionary.emplace(_key, _definition);

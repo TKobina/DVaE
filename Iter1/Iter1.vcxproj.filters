@@ -19,6 +19,15 @@
     <Filter Include="data_structure">
       <UniqueIdentifier>{5ba9ed94-2663-4127-9d59-7f68992ab364}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{6ab2c361-e3aa-45b4-b09f-9fc51423b754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libraries">
+      <UniqueIdentifier>{a9c4038a-7298-47f4-8ba2-40ddfa9c5e3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics_engine">
+      <UniqueIdentifier>{ac548979-de86-4c31-bdae-1ab35a08a9ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -44,6 +53,12 @@
     </ClCompile>
     <ClCompile Include="data_structure\collective.cpp">
       <Filter>data_structure</Filter>
+    </ClCompile>
+    <ClCompile Include="source\glad.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics_engine\graphics_engine.cpp">
+      <Filter>graphics_engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +113,24 @@
     </ClInclude>
     <ClInclude Include="data_structure\collective.h">
       <Filter>data_structure</Filter>
+    </ClInclude>
+    <ClInclude Include="include\glad\glad.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GLFW\glfw3.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GLFW\glfw3native.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KHR\khrplatform.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics_engine\graphics_engine.h">
+      <Filter>graphics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics_engine\graphics_engine_data.h">
+      <Filter>graphics_engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
