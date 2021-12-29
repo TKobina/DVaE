@@ -14,15 +14,17 @@
 	someOpenGLFunctionThatDrawsOurTriangle();
 */
 #pragma once
+#include <memory>
 #include <iostream>
 #include <string>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "graphics_engine_data.h"
+#include "shader.h"
 
-//GLOBAL METHODS (graphics_engine_methods.cpp)
+//GLOBAL FUNCTIONS (graphics_functions.cpp)
 void framebuffer_size_callback(GLFWwindow* window, int _width, int _height);
-void processInput(GLFWwindow* window);
+void processInput(GLFWwindow* window, Properties _p);
 
 //CLASS METHODS (graphics_engine.cpp)
 class GraphicsEngine
@@ -32,26 +34,21 @@ private:
 	int logLength = 512;
 	char infoLog[512];
 
-	Properties properties;
-	Shapes shapes;
-	Shaders shaders;
+	//std::unique_ptr<Properties> properties;
+	std::shared_ptr<Properties> properties;
+	std::shared_ptr<Shapes> shapes;
+	std::unique_ptr<Shader> shader;
 	
 	GLFWwindow* window;
-	unsigned int VBO;
-	unsigned int VAO;
-	unsigned int vertexShader;
-	unsigned int fragmentShader;
-	unsigned int shaderProgram;
+	unsigned int VBOs[2];
+	unsigned int VAOs[2];
+	unsigned int EBO;
 
 	bool initialize_window();
-	bool initialize_buffers();
-	//bool initialize_vao();
-	bool initialize_shaders();
-	//bool fill_buffers();
-	bool link_attributes();
+	bool initialize_buffers(); //VAO, VBA, EBO
 
 public:
-	//GraphicsEngine();
+	GraphicsEngine();
 	bool initialize();
 	int run();
 };

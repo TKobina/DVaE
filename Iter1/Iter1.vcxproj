@@ -27,6 +27,8 @@
     <ClCompile Include="data_structure\importer.cpp" />
     <ClCompile Include="data_structure\node.cpp" />
     <ClCompile Include="graphics_engine\graphics_engine.cpp" />
+    <ClCompile Include="graphics_engine\graphics_functions.cpp" />
+    <ClCompile Include="graphics_engine\shader.cpp" />
     <ClCompile Include="source\glad.c" />
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
@@ -36,9 +38,8 @@
     <None Include="data\MOCK_DATA (3).csv" />
     <None Include="data\MOCK_EDGES.csv" />
     <None Include="data\MOCK_NODES.csv" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="output\output_log.txt" />
+    <None Include="graphics_engine\shader.fs" />
+    <None Include="graphics_engine\shader.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structure\attribute.h" />
@@ -53,10 +54,14 @@
     <ClInclude Include="data_structure\node.h" />
     <ClInclude Include="graphics_engine\graphics_engine.h" />
     <ClInclude Include="graphics_engine\graphics_engine_data.h" />
+    <ClInclude Include="graphics_engine\shader.h" />
     <ClInclude Include="include\glad\glad.h" />
     <ClInclude Include="include\GLFW\glfw3.h" />
     <ClInclude Include="include\GLFW\glfw3native.h" />
     <ClInclude Include="include\KHR\khrplatform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="output\output_log.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -166,6 +171,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

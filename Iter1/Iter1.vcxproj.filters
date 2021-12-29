@@ -60,6 +60,12 @@
     <ClCompile Include="graphics_engine\graphics_engine.cpp">
       <Filter>graphics_engine</Filter>
     </ClCompile>
+    <ClCompile Include="graphics_engine\graphics_functions.cpp">
+      <Filter>graphics_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics_engine\shader.cpp">
+      <Filter>graphics_engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="data\MOCK_DATA (1).csv">
@@ -77,11 +83,12 @@
     <None Include="data\MOCK_NODES.csv">
       <Filter>data</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="output\output_log.txt">
-      <Filter>output</Filter>
-    </Text>
+    <None Include="graphics_engine\shader.vs">
+      <Filter>graphics_engine</Filter>
+    </None>
+    <None Include="graphics_engine\shader.fs">
+      <Filter>graphics_engine</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structure\edge.h">
@@ -132,5 +139,13 @@
     <ClInclude Include="graphics_engine\graphics_engine_data.h">
       <Filter>graphics_engine</Filter>
     </ClInclude>
+    <ClInclude Include="graphics_engine\shader.h">
+      <Filter>graphics_engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="output\output_log.txt">
+      <Filter>output</Filter>
+    </Text>
   </ItemGroup>
 </Project>
