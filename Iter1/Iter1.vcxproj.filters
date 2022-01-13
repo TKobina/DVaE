@@ -28,6 +28,9 @@
     <Filter Include="graphics_engine">
       <UniqueIdentifier>{ac548979-de86-4c31-bdae-1ab35a08a9ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{bbfb6d8e-b73a-489c-89e3-7d401ad8be81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -58,9 +61,6 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="graphics_engine\graphics_engine.cpp">
-      <Filter>graphics_engine</Filter>
-    </ClCompile>
-    <ClCompile Include="graphics_engine\graphics_functions.cpp">
       <Filter>graphics_engine</Filter>
     </ClCompile>
     <ClCompile Include="graphics_engine\shader.cpp">
@@ -140,6 +140,9 @@
       <Filter>graphics_engine</Filter>
     </ClInclude>
     <ClInclude Include="graphics_engine\shader.h">
+      <Filter>graphics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics_engine\stb_image.h">
       <Filter>graphics_engine</Filter>
     </ClInclude>
   </ItemGroup>

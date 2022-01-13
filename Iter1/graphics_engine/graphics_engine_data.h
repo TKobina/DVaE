@@ -3,7 +3,7 @@
 struct Properties
 {
 	//NOT CURRENTLY IN USE
-	char const* name = "LearnOpenGL";
+	char const* name = "DVaE";
 	int window_width = 800;
 	int window_height = 600;
 	int viewport_width = window_width;
@@ -14,31 +14,34 @@ struct Properties
 
 	char const* vShaderFName = "graphics_engine/shader.vs";
 	char const* fShaderFName = "graphics_engine/shader.fs";
+	char const* textureFName1 = "resources/fern.jpg";
+	char const* textureFName2 = "resources/sunrise.png";
 };
 
 struct Shapes
 {
-	float triangle_e[9] =
+	float triangle_e[18] =
 	{
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.0f, 0.5f, 0.0f
+		-0.5f, -0.5f, 0.0f, //1.0f, 0.0f, 0.0f,
+		0.5f, -0.5f, 0.0f, //0.0f, 1.0f, 0.1f,
+		0.0f, 0.5f, 0.0f//, 0.0f, 0.0f, 1.0f
 	};
 
-	float triangle_r[9] =
+	float triangle_r[18] =
 	{
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		-0.5f, 0.5f, 0.0f
+		-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+		0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+		-0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f
 	};
 
 
-	float rectangle[12] = 
+	float rectangle[32] = 
 	{
-		0.5f, 0.5f, 0.0f, // top right
-		0.5f, -0.5f, 0.0f, // bottom right
-		-0.5f, -0.5f, 0.0f, // bottom left
-		-0.5f, 0.5f, 0.0f // top left
+		// positions // colors // texture coords
+		0.5f, 0.5f, 0.0f,	1.0f, 0.0f, 0.0f,	1.0f, 1.0f, // top right
+		0.5f, -0.5f, 0.0f,	0.0f, 1.0f, 0.0f,	1.0f, 0.0f, // bottom right
+		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,	0.0f, 0.0f, // bottom left
+		-0.5f, 0.5f, 0.0f,	1.0f, 1.0f, 0.0f,	0.0f, 1.0f // top left
 	};
 
 	unsigned int rectangle_indices[6] =
@@ -48,6 +51,7 @@ struct Shapes
 	};
 };
 
+/*
 struct Shaders
 {
 	const char* vertexShaderSource = "#version 330 core\n"
@@ -65,3 +69,4 @@ struct Shaders
 		" FragColor = vec4(1.0f, 0.5f, 0.2f, 0.25f);\n"
 		"}\0";
 };
+*/

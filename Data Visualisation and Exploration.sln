@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Iter1", "Iter1\Iter1.vcxproj", "{25FDD46F-75C2-42CD-80E1-DE657532E30B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "external resources", "external resources", "{BD583D08-5486-4EDC-AF4F-7F86B2D16C99}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "external_resources", "external_resources", "{BD583D08-5486-4EDC-AF4F-7F86B2D16C99}"
 	ProjectSection(SolutionItems) = preProject
 		External Resources\JoeyDevries-LearnOpenGL.pdf = External Resources\JoeyDevries-LearnOpenGL.pdf
 	EndProjectSection

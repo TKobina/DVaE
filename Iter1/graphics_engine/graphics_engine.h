@@ -13,42 +13,56 @@
 3. draw the object
 	someOpenGLFunctionThatDrawsOurTriangle();
 */
+
+//Some of the code within the functions adapted from LearnOpenGL
+//Joey DeVries
+//https://github.com/JoeyDeVries/LearnOpenGL
+
 #pragma once
 #include <memory>
 #include <iostream>
 #include <string>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
+//https://github.com/g-truc/glm/
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include "graphics_engine_data.h"
 #include "shader.h"
 
-//GLOBAL FUNCTIONS (graphics_functions.cpp)
-void framebuffer_size_callback(GLFWwindow* window, int _width, int _height);
-void processInput(GLFWwindow* window, Properties _p);
-
-//CLASS METHODS (graphics_engine.cpp)
 class GraphicsEngine
 {
 private:
-	int success;
-	int logLength = 512;
-	char infoLog[512];
-
-	//std::unique_ptr<Properties> properties;
 	std::shared_ptr<Properties> properties;
 	std::shared_ptr<Shapes> shapes;
 	std::unique_ptr<Shader> shader;
-	
+
+
 	GLFWwindow* window;
-	unsigned int VBOs[2];
-	unsigned int VAOs[2];
+	//unsigned int VBOs[2];
+	//unsigned int VAOs[2];
+	unsigned int VAO;
+	unsigned int VBO;
 	unsigned int EBO;
+	unsigned int texture1, texture2;
 
 	bool initialize_window();
 	bool initialize_buffers(); //VAO, VBA, EBO
+	bool initialize_textures();
+	bool set_texture_parameters(unsigned int _texture);
+
+	static void framebuffer_size_callback(GLFWwindow* window, int _width, int _height);
+	void processInput(GLFWwindow* window);
+
+	void transform();
+	void draw();
 
 public:
 	GraphicsEngine();
 	bool initialize();
 	int run();
+
 };

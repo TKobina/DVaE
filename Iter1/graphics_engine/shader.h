@@ -1,3 +1,7 @@
+//Adapted from LearnOpenGL
+//Joey DeVries
+//https://github.com/JoeyDeVries/LearnOpenGL
+
 #pragma once
 #include <glad/glad.h>
 

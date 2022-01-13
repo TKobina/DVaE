@@ -27,7 +27,6 @@
     <ClCompile Include="data_structure\importer.cpp" />
     <ClCompile Include="data_structure\node.cpp" />
     <ClCompile Include="graphics_engine\graphics_engine.cpp" />
-    <ClCompile Include="graphics_engine\graphics_functions.cpp" />
     <ClCompile Include="graphics_engine\shader.cpp" />
     <ClCompile Include="source\glad.c" />
     <ClCompile Include="source\main.cpp" />
@@ -55,6 +54,7 @@
     <ClInclude Include="graphics_engine\graphics_engine.h" />
     <ClInclude Include="graphics_engine\graphics_engine_data.h" />
     <ClInclude Include="graphics_engine\shader.h" />
+    <ClInclude Include="graphics_engine\stb_image.h" />
     <ClInclude Include="include\glad\glad.h" />
     <ClInclude Include="include\GLFW\glfw3.h" />
     <ClInclude Include="include\GLFW\glfw3native.h" />
