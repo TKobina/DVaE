@@ -22,6 +22,7 @@ initially to Cytoscape or Analyst Notebook.
 		* Joey DeVries: Learn OpenGL
 			*  https://learnopengl.com/
 			*  https://github.com/JoeyDeVries/LearnOpenGL/tree/master/src
-		* GLFW: https://www.glfw.org/
-		* GLFW: https://www.glfw.org/docs/latest/index.html
+		* GLFW: 
+			* https://www.glfw.org/
+			* https://www.glfw.org/docs/latest/index.html
 			
