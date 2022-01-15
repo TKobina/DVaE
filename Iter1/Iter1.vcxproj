@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="controller\controller.cpp" />
     <ClCompile Include="data_structure\attribute_dictionary.cpp" />
     <ClCompile Include="data_structure\book.cpp" />
     <ClCompile Include="data_structure\collective.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="data_structure\entity.cpp" />
     <ClCompile Include="data_structure\importer.cpp" />
     <ClCompile Include="data_structure\node.cpp" />
+    <ClCompile Include="graphics_engine\escher.cpp" />
     <ClCompile Include="graphics_engine\graphics_engine.cpp" />
     <ClCompile Include="graphics_engine\shader.cpp" />
     <ClCompile Include="source\glad.c" />
@@ -41,6 +43,7 @@
     <None Include="graphics_engine\shader.vs" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="controller\object_buffer.h" />
     <ClInclude Include="data_structure\attribute.h" />
     <ClInclude Include="data_structure\attribute_dictionary.h" />
     <ClInclude Include="data_structure\book.h" />
@@ -51,14 +54,16 @@
     <ClInclude Include="data_structure\importer.h" />
     <ClInclude Include="data_structure\misc.h" />
     <ClInclude Include="data_structure\node.h" />
+    <ClInclude Include="graphics_engine\camera.h" />
+    <ClInclude Include="graphics_engine\escher.h" />
     <ClInclude Include="graphics_engine\graphics_engine.h" />
     <ClInclude Include="graphics_engine\graphics_engine_data.h" />
     <ClInclude Include="graphics_engine\shader.h" />
-    <ClInclude Include="graphics_engine\stb_image.h" />
     <ClInclude Include="include\glad\glad.h" />
     <ClInclude Include="include\GLFW\glfw3.h" />
     <ClInclude Include="include\GLFW\glfw3native.h" />
     <ClInclude Include="include\KHR\khrplatform.h" />
+    <ClInclude Include="include\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="output\output_log.txt" />

@@ -3,32 +3,51 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-GraphicsEngine::GraphicsEngine() 
+GraphicsEngine::GraphicsEngine()
 {
+	srand(static_cast<unsigned>(time(0)));
 	properties = std::make_shared<Properties>();
 	shapes = std::make_shared<Shapes>();
+	camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 3.0f));
+	camera->lastX = properties->window_width / 2;
+	camera->lastY = properties->window_height / 2;
+	model = glm::mat4(1.0f);
+	view = glm::mat4(1.0f);
+	deltaTime = 0.0f;
+	lastFrame = 0.0f;
+
+	initialize();
+}
+
+GraphicsEngine::~GraphicsEngine()
+{
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
+
+	glfwTerminate();
+
+	//glfwDestroyWindow(window);
 }
 
 bool GraphicsEngine::initialize()
 {
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	
 	if (!initialize_window()) return false;
-
-	shader = std::make_unique<Shader>(Shader(properties->vShaderFName, properties->fShaderFName));
-
+	if (!initialize_shader()) return false;
 	if (!initialize_buffers()) return false;
-
 	if (!initialize_textures()) return false;
 	
+	escher = std::make_unique<Escher>(shader, shapes);
 	return true;
 }
 
 bool GraphicsEngine::initialize_window()
 {
+	glfwInit();
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
 	window = glfwCreateWindow(properties->window_width, properties->window_height, properties->name, NULL, NULL);
 
 	if (window == NULL)
@@ -38,7 +57,14 @@ bool GraphicsEngine::initialize_window()
 		return false;
 	}
 	glfwMakeContextCurrent(window);
+
+	glfwSetWindowUserPointer(window, this);
+
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetScrollCallback(window, scroll_callback);
+
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -46,8 +72,8 @@ bool GraphicsEngine::initialize_window()
 		return false;
 	}
 
-	//glViewport(properties->cornerX, properties->cornerY, properties->viewport_width, properties->viewport_height);
-	//glEnable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);
+
 	return true;
 }
 
@@ -56,25 +82,35 @@ bool GraphicsEngine::initialize_buffers()
 	//glGenVertexArrays(2, VAOs);
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
+	//glGenBuffers(1, &EBO);
 
 	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(shapes->rectangle), shapes->rectangle, GL_STATIC_DRAW);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(shapes->rectangle), shapes->rectangle, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(shapes->cube), shapes->cube, GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(shapes->rectangle_indices), shapes->rectangle_indices, GL_STATIC_DRAW);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(shapes->rectangle_indices), shapes->rectangle_indices, GL_STATIC_DRAW);
 
 	// position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+	
 	// color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
+	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	//glEnableVertexAttribArray(1);
+	
 	// texture coord attribute
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+
+	return true;
+}
+
+bool GraphicsEngine::initialize_shader()
+{
+	shader = std::make_shared<Shader>(Shader(properties->vShaderFName, properties->fShaderFName));
 
 	return true;
 }
@@ -140,27 +176,21 @@ bool GraphicsEngine::set_texture_parameters(unsigned int _texture)
 	return true;
 }
 
-void GraphicsEngine::transform()
+void GraphicsEngine::update_projection()
 {
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	projection = glm::perspective(
+		glm::radians(camera->Zoom), (float)properties->window_width / (float)properties->window_height,
+		0.1f, 100.0f);
 
-	glm::mat4 view = glm::mat4(1.0f);
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); //translate view backward
-
-	glm::mat4 projection;
-	projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
-
-	unsigned int modelLoc = glGetUniformLocation(shader->ID, "model");
-	unsigned int viewLoc = glGetUniformLocation(shader->ID, "view");
-	unsigned int projectionLoc = glGetUniformLocation(shader->ID, "projection");
-
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
-
-
+	shader->setMat4("projection", projection);
 }
+
+void GraphicsEngine::update_view()
+{
+	view = camera->GetViewMatrix();
+	shader->setMat4("view", view);
+}
+
 
 void GraphicsEngine::draw()
 {
@@ -170,43 +200,71 @@ void GraphicsEngine::draw()
 	glBindTexture(GL_TEXTURE_2D, texture2);
 
 	shader->use();
-	transform();
+	update_projection();
+	update_view();
+	escher->escherize(VAO);
 
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 int GraphicsEngine::run()
 {
 	while (!glfwWindowShouldClose(window))
 	{
+		float currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+
 		processInput(window);
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		draw();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glDeleteBuffers(1, &EBO);
-
-	glfwTerminate();
 	return 0;
 }
 
-
+//CALLBACK AND INPUT PROC'ING FUNCTIONS
 void GraphicsEngine::framebuffer_size_callback(GLFWwindow* window, int _width, int _height)
 {
+	GraphicsEngine* GE = (GraphicsEngine*)glfwGetWindowUserPointer(window);
 	glViewport(0, 0, _width, _height);
+}
+
+void GraphicsEngine::mouse_callback(GLFWwindow* window, double _xpos, double _ypos)
+{
+	GraphicsEngine* GE = (GraphicsEngine *)glfwGetWindowUserPointer(window);
+
+	float xpos = static_cast<float>(_xpos);
+	float ypos = static_cast<float>(_ypos);
+
+	float xoffset = _xpos - GE->camera->lastX;
+	float yoffset = GE->camera->lastY - _ypos; // reversed since y-coordinates go from bottom to top
+
+	GE->camera->lastX = _xpos;
+	GE->camera->lastY = _ypos;
+
+	GE->camera->ProcessMouseMovement(xoffset, yoffset);
+}
+
+void GraphicsEngine::scroll_callback(GLFWwindow* window, double _xoffset, double _yoffset)
+{
+	GraphicsEngine* GE = (GraphicsEngine*)glfwGetWindowUserPointer(window);	
+	float zoom = GE->camera->Zoom - float(_yoffset);
+	if (zoom < 1.0f) 
+		zoom = 1.0f;
+	if (zoom > 45.0f) 
+		zoom = 45.0f;
+	GE->camera->Zoom = zoom;
 }
 
 void GraphicsEngine::processInput(GLFWwindow* window)
 {
+	GraphicsEngine* GE = (GraphicsEngine*)glfwGetWindowUserPointer(window);
+
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
 
@@ -224,4 +282,14 @@ void GraphicsEngine::processInput(GLFWwindow* window)
 		}
 	}
 
+	//movement
+	float deltaTime = GE->deltaTime;
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		camera->ProcessKeyboard(UPWARD, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		camera->ProcessKeyboard(DOWNWARD, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		camera->ProcessKeyboard(LEFTWARD, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		camera->ProcessKeyboard(RIGHTWARD, deltaTime);
 }

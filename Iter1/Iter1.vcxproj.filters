@@ -9,10 +9,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="data">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="output">
       <UniqueIdentifier>{a16191d2-ff50-4605-bce4-19c3d6fc4554}</UniqueIdentifier>
     </Filter>
@@ -30,6 +26,13 @@
     </Filter>
     <Filter Include="resources">
       <UniqueIdentifier>{bbfb6d8e-b73a-489c-89e3-7d401ad8be81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="controller">
+      <UniqueIdentifier>{056de569-e198-4a72-a149-f107230bba79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +67,12 @@
       <Filter>graphics_engine</Filter>
     </ClCompile>
     <ClCompile Include="graphics_engine\shader.cpp">
+      <Filter>graphics_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\controller.cpp">
+      <Filter>controller</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics_engine\escher.cpp">
       <Filter>graphics_engine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -142,7 +151,16 @@
     <ClInclude Include="graphics_engine\shader.h">
       <Filter>graphics_engine</Filter>
     </ClInclude>
-    <ClInclude Include="graphics_engine\stb_image.h">
+    <ClInclude Include="include\stb_image.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\object_buffer.h">
+      <Filter>controller</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics_engine\escher.h">
+      <Filter>graphics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics_engine\camera.h">
       <Filter>graphics_engine</Filter>
     </ClInclude>
   </ItemGroup>

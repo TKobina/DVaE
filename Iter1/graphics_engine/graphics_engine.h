@@ -25,11 +25,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-//https://github.com/g-truc/glm/
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
+#include "camera.h"
+#include "escher.h"
 #include "graphics_engine_data.h"
 #include "shader.h"
 
@@ -37,32 +34,38 @@ class GraphicsEngine
 {
 private:
 	std::shared_ptr<Properties> properties;
+	std::shared_ptr<Shader> shader;
 	std::shared_ptr<Shapes> shapes;
-	std::unique_ptr<Shader> shader;
-
+	std::unique_ptr<Escher> escher;
+	std::unique_ptr<Camera> camera;
 
 	GLFWwindow* window;
+
 	//unsigned int VBOs[2];
 	//unsigned int VAOs[2];
-	unsigned int VAO;
-	unsigned int VBO;
-	unsigned int EBO;
+	float deltaTime, lastFrame; 
+	unsigned int VAO, VBO, EBO;
 	unsigned int texture1, texture2;
+	glm::mat4 model, view, projection;
 
+	bool initialize();
 	bool initialize_window();
+	bool initialize_shader();
 	bool initialize_buffers(); //VAO, VBA, EBO
 	bool initialize_textures();
 	bool set_texture_parameters(unsigned int _texture);
 
-	static void framebuffer_size_callback(GLFWwindow* window, int _width, int _height);
-	void processInput(GLFWwindow* window);
-
-	void transform();
+	void update_projection();
+	void update_view();
 	void draw();
+
+	static void framebuffer_size_callback(GLFWwindow* window, int _width, int _height);
+	static void mouse_callback(GLFWwindow* window, double _xpos, double _ypos);
+	static void scroll_callback(GLFWwindow* window, double _xoffset, double _yoffset);
+	void processInput(GLFWwindow* window);
 
 public:
 	GraphicsEngine();
-	bool initialize();
+	~GraphicsEngine();
 	int run();
-
 };
