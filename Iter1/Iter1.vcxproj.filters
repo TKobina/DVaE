@@ -154,7 +154,7 @@
     <ClInclude Include="include\stb_image.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="controller\object_buffer.h">
+    <ClInclude Include="controller\controller.h">
       <Filter>controller</Filter>
     </ClInclude>
     <ClInclude Include="graphics_engine\escher.h">
@@ -163,10 +163,8 @@
     <ClInclude Include="graphics_engine\camera.h">
       <Filter>graphics_engine</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="output\output_log.txt">
-      <Filter>output</Filter>
-    </Text>
+    <ClInclude Include="headers\entity_buffer.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

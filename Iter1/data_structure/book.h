@@ -6,6 +6,7 @@ Handles graph objects, attribute dictionaries, and manages entities' attributes
 #include "graph.h"
 #include "collective.h"
 
+struct EntityBuffer;
 
 class Book
 {
@@ -17,6 +18,8 @@ private:
 public:
 	Book();
 	void print_all(std::ostream& _out = std::cout);
+	void populate_node_buffer(EntityBuffer& _buffer);
+	void populate_edge_buffer(EntityBuffer& _buffer);
 
 	//Dictionary Management
 	AttributeDictionary& dictionary_get(int type);

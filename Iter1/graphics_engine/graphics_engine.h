@@ -36,7 +36,7 @@ private:
 	std::shared_ptr<Properties> properties;
 	std::shared_ptr<Shader> shader;
 	std::shared_ptr<Shapes> shapes;
-	std::unique_ptr<Escher> escher;
+	std::shared_ptr<Escher> escher;
 	std::unique_ptr<Camera> camera;
 
 	GLFWwindow* window;
@@ -67,5 +67,6 @@ private:
 public:
 	GraphicsEngine();
 	~GraphicsEngine();
+	std::shared_ptr<Escher> get_escher() { return escher; }
 	int run();
 };

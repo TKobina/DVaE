@@ -8,7 +8,7 @@ GraphicsEngine::GraphicsEngine()
 	srand(static_cast<unsigned>(time(0)));
 	properties = std::make_shared<Properties>();
 	shapes = std::make_shared<Shapes>();
-	camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 3.0f));
+	camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 0.0f));
 	camera->lastX = properties->window_width / 2;
 	camera->lastY = properties->window_height / 2;
 	model = glm::mat4(1.0f);
@@ -191,7 +191,6 @@ void GraphicsEngine::update_view()
 	shader->setMat4("view", view);
 }
 
-
 void GraphicsEngine::draw()
 {
 	glActiveTexture(GL_TEXTURE0);
@@ -202,7 +201,7 @@ void GraphicsEngine::draw()
 	shader->use();
 	update_projection();
 	update_view();
-	escher->escherize(VAO);
+	escher->draw(VAO);
 
 }
 

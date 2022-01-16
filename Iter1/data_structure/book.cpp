@@ -111,3 +111,13 @@ void Book::print_all(std::ostream& _out)
 {
 	graph->print_all(_out);
 }
+
+void Book::populate_node_buffer(EntityBuffer& _buffer)
+{
+	graph->populate_node_buffer(_buffer);
+}
+
+void Book::populate_edge_buffer(EntityBuffer& _buffer)
+{
+	graph->populate_edge_buffer(_buffer);
+}

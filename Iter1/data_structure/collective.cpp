@@ -94,3 +94,16 @@ void Collective::print_all(std::ostream& _out)
 	_out << "\n";
 }
 
+void Collective::populate_node_buffer(EntityBuffer& _buffer)
+{
+	for (std::shared_ptr<Entity> node : nodes)
+	{
+		_buffer.entities.push_back(node);
+		_buffer.current++;
+	}
+}
+
+void Collective::populate_edge_buffer(EntityBuffer& _buffer)
+{
+
+}

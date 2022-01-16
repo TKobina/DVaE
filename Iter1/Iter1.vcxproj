@@ -43,7 +43,7 @@
     <None Include="graphics_engine\shader.vs" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="controller\object_buffer.h" />
+    <ClInclude Include="controller\controller.h" />
     <ClInclude Include="data_structure\attribute.h" />
     <ClInclude Include="data_structure\attribute_dictionary.h" />
     <ClInclude Include="data_structure\book.h" />
@@ -59,14 +59,12 @@
     <ClInclude Include="graphics_engine\graphics_engine.h" />
     <ClInclude Include="graphics_engine\graphics_engine_data.h" />
     <ClInclude Include="graphics_engine\shader.h" />
+    <ClInclude Include="headers\entity_buffer.h" />
     <ClInclude Include="include\glad\glad.h" />
     <ClInclude Include="include\GLFW\glfw3.h" />
     <ClInclude Include="include\GLFW\glfw3native.h" />
     <ClInclude Include="include\KHR\khrplatform.h" />
     <ClInclude Include="include\stb_image.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="output\output_log.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

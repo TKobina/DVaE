@@ -12,6 +12,7 @@ Interface for graph objects
 #include "node.h"
 #include "edge.h"
 #include "attribute_dictionary.h"
+#include "../headers/entity_buffer.h"
 
 using std::vector;
 using std::map;
@@ -32,4 +33,6 @@ public:
 	virtual void remove_edge(int _id) = 0;
 
 	virtual void print_all(std::ostream& _out = std::cout) = 0;
+	virtual void populate_node_buffer(EntityBuffer& _buffer) = 0;
+	virtual void populate_edge_buffer(EntityBuffer& _buffer) = 0;
 };

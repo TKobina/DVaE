@@ -1,6 +1,8 @@
 #pragma once
 #include "graph.h"
 
+struct EntityBuffer;
+
 class Collective : public Graph
 {
 private:
@@ -28,4 +30,6 @@ public:
 	void remove_edge(int _id);
 
 	void print_all(std::ostream& _out = std::cout);
+	void populate_node_buffer(EntityBuffer& _buffer);
+	void populate_edge_buffer(EntityBuffer& _buffer);
 };

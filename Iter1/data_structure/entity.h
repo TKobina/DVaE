@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <mutex>
 #include "attribute.h"
 #include "attribute_dictionary.h"
 
@@ -10,6 +11,7 @@ const int NULL_ENTITY = 0;
 //Entity Types
 const int NODE = 0;
 const int EDGE = 1;
+
 
 class Entity
 {
@@ -20,6 +22,7 @@ protected:
 	std::map<int, int> attributeMap;
 public:	
 	Entity(int _entityID = NULL_ENTITY);
+	
 	virtual int get_id() = 0;
 
 	void add_attribute(std::shared_ptr<_Attribute> attribute);
